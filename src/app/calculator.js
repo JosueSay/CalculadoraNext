@@ -1,9 +1,15 @@
-// calculator.js
 export function validaResultado(resultado) {
-    if (resultado < 0 || resultado > 999999999) {
+    // Si el resultado es negativo, retorna "ERROR"
+    if (resultado < 0) {
         return "ERROR";
     }
+    // Si el resultado es mayor a 999999999, retorna "ERROR"
+    if (resultado > 999999999) {
+        return "ERROR";
+    }
+    // Convierte el resultado a una cadena con formato de número
     let resultadoStr = resultado.toLocaleString();
+    // Si la longitud del número (sin comas) es mayor a 9, retorna "ERROR"
     if (resultadoStr.replace(/,/g, '').length > 9) {
         return "ERROR";
     }
@@ -18,6 +24,10 @@ export function suma(a, b) {
 
 export function resta(a, b) {
     const resultado = parseFloat(a) - parseFloat(b);
+    // Si el resultado es negativo, retorna "ERROR" para operaciones de resta
+    if (resultado < 0) {
+        return "ERROR";
+    }
     return validaResultado(resultado);
 }
 
@@ -34,7 +44,7 @@ export function divide(a, b) {
 
 export function cambiarSigno(numero) {
     let resultado = -parseFloat(numero);
-    if (resultado < 0) return "ERROR";
+    // Permite mostrar el número negativo como resultado de la operación "+/-"
     return validaResultado(resultado);
 }
 

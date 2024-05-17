@@ -1,6 +1,5 @@
-// pages/index.js
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { suma, resta, multiplica, divide, cambiarSigno, borrarUltimoDigito, borrarTodo } from './calculator';
 import Button from '../components/Button/Button';
 import Display from '../components/Display/Display';
@@ -38,7 +37,7 @@ function Home() {
     { title: '=', className: 'button-equals' },
   ];
 
-  const clickButton = (text, className) => {
+  const clickButton = (text, className, source = 'ratón') => {
     if (text === 'ERROR' || text === 'División por cero') {
       setErrorDisplay(true);
       setDisplayText(text);
@@ -47,7 +46,6 @@ function Home() {
       setErrorDisplay(false);
     }
 
-    // Handle numeric and decimal inputs
     if (className.includes('button-number')) {
       if (displayText.length < 9) {
         if (currentOperation && displayText === lastValue?.toString()) {
@@ -58,7 +56,7 @@ function Home() {
       }
     }
 
-    // Handle operations
+    // operacioens
     if (className.includes('button-operator') && text !== '=') {
       setLastValue(parseFloat(displayText));
       setCurrentOperation(text);
@@ -69,7 +67,7 @@ function Home() {
       }
     }
 
-    // Handle the equals button
+    // Botones/operaciones
     if (text === '=') {
       if (currentOperation && lastValue !== null) {
         let result;
@@ -87,7 +85,7 @@ function Home() {
             result = divide(lastValue, displayText);
             break;
           default:
-            result = displayText;  // No operation selected
+            result = displayText; // no hacer nada
         }
         setDisplayText(result);
         if (result === "ERROR" || result === "División por cero") setErrorDisplay(true);
@@ -96,7 +94,6 @@ function Home() {
       }
     }
 
-    // Handle clearing and resetting
     if (text === 'AC') {
       setDisplayText(borrarTodo());
       setErrorDisplay(false);
@@ -110,7 +107,51 @@ function Home() {
         setErrorDisplay(false);
       }
     }
+
+    if (source === 'teclado') {
+      setActiveButton(text);
+      setTimeout(() => setActiveButton(null), 100);
+    }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const key = event.key;
+      const buttonInfo = buttonDataHorizontal.concat(buttonDataVertical).find(button => button.title === key);
+      if (buttonInfo) {
+        event.preventDefault();
+        clickButton(buttonInfo.title, buttonInfo.className, 'teclado');
+      }
+      if (key === 'Enter') {
+        event.preventDefault();
+        const equalsButton = buttonDataVertical.find(button => button.title === '=');
+        if (equalsButton) {
+          clickButton('=', equalsButton.className, 'teclado');
+        }
+      } else if (key === 'Backspace') {
+        const cButton = buttonDataHorizontal.find(button => button.title === 'C');
+        if (cButton) {
+          clickButton('C', cButton.className, 'teclado');
+        }
+      } else if (key === 'Delete') {
+        const acButton = buttonDataHorizontal.find(button => button.title === 'AC');
+        if (acButton) {
+          clickButton('AC', acButton.className, 'teclado');
+        }
+      }
+    };
+
+    const handleKeyUp = () => {
+      setActiveButton(null);
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [buttonDataHorizontal, buttonDataVertical]);
 
   return (
     <main className='calculadora-container' tabIndex='0'>
@@ -134,7 +175,7 @@ function Home() {
               key={title}
               title={title}
               onClick={() => clickButton(title, className)}
-              className={className}
+              className={`${className} ${activeButton === title ? 'button-active' : ''}`}
             />
           ))}
         </div>
