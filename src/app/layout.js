@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='es'>
       <Head>
-        <link rel='shortcut icon' href='/calculadora.png' />
+        <link rel='shortcut icon' href='/calculadora.ico' />
       </Head>
       <body>
         {children}
