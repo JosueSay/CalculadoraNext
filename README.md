@@ -3,6 +3,7 @@
 ## 📝 Descripción
 
 Este proyecto es una calculadora simple hecha en Next.js. La calculadora consta de una pantalla (display) y un teclado numérico compuesto de botones HTML. Todo el input se realiza desde los botones presionado por el teclado o mouse. 
+![calculadora](https://github.com/JosueSay/CalculadoraNext/assets/106031855/ac4f1d5f-59c3-43ef-a58c-9f93a4a4097f)
 
 ## ⚙️ Funcionalidad
 
