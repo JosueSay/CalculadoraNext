@@ -117,13 +117,6 @@ function Home() {
       setActiveButton(text);
       setTimeout(() => setActiveButton(null), 100);
     }
-    console.log("Current operation: ", currentOperation);
-    console.log("Last value: ", lastValue);
-    console.log("Display text: ", displayText);
-
-
-
-
   }, [displayText, currentOperation, lastValue]);
 
   useEffect(() => {
