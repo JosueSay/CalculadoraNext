@@ -1,0 +1,58 @@
+.button-number {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  font-size: 1rem;
+  padding: 1rem;
+  color: black;
+  background-color: rgb(239, 239, 239);
+  border: 0.1rem solid #ffffff;
+  transition-duration: 0.4s;
+  box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button-text:hover, .button-number:hover {
+  background-color: #001eff;
+  color: white;
+  cursor: pointer;
+}
+
+.button-operator {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  font-size: 1rem;
+  padding: 1rem;
+  color: rgb(21, 0, 255);
+  background-color: rgb(239, 239, 239);
+  border: 0.1rem solid #ffffff;
+  transition-duration: 0.4s;
+  box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button-operator:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.button-text {
+  border-radius: 0.5rem;
+  min-width: 8rem;
+  max-width: 8rem; 
+  height: 3rem; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: black;
+  background-color: rgb(239, 239, 239);
+  border: 0.1rem solid #ffffff;
+  transition-duration: 0.4s;
+  box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
