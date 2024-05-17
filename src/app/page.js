@@ -60,12 +60,13 @@ function Home() {
     if (className.includes('button-operator') && text !== '=') {
       setLastValue(parseFloat(displayText));
       setCurrentOperation(text);
+      setDisplayText("");
       if (text === '+/-') {
         const newDisplay = cambiarSigno(displayText);
         setDisplayText(newDisplay);
         if (newDisplay === "ERROR") setErrorDisplay(true);
       }
-    }
+    }    
 
     // Botones/operaciones
     if (text === '=') {
@@ -116,6 +117,13 @@ function Home() {
       setActiveButton(text);
       setTimeout(() => setActiveButton(null), 100);
     }
+    console.log("Current operation: ", currentOperation);
+    console.log("Last value: ", lastValue);
+    console.log("Display text: ", displayText);
+
+
+
+
   }, [displayText, currentOperation, lastValue]);
 
   useEffect(() => {

@@ -1,11 +1,9 @@
 export function validaResultado(resultado) {
     // Convierte el resultado a una cadena con formato de número
     let resultadoStr = resultado.toLocaleString();
-    // Si la longitud del número (sin comas) es mayor a 9, retorna "ERROR"
     if (resultadoStr.length > 9) {
         return "ERROR";
     }
-
     return resultadoStr;
 }
 
