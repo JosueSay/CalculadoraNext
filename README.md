@@ -62,19 +62,24 @@ Estos son los comandos de npm que puedes usar en este proyecto:
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/JosueSay/CalculadoraNext.git
+   ```
 
 2. Instala las dependencias
-```bash
-   npm install
+    ```bash
+       npm install
+    ```
 
 3. Correr la aplicación en modo desarrollo
-```bash
-   npm run dev
+  ```bash
+     npm run dev
+  ```
 
 4. Correr los test
-```bash
-   npm run test
+  ```bash
+     npm run test
+  ```
 
 5. Genera el reporte de cobertura:
-```bash
-   npm run coverage
+  ```bash
+     npm run coverage
+  ```
