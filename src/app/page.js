@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from '../components/Button/Button';
 import Display from '../components/Display/Display';
 import './calculadora.css';
@@ -44,8 +44,40 @@ function Home() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    const key = event.key;
+    const buttonTitles = buttonDataHorizontal.concat(buttonDataVertical).map(button => button.title);
+
+    if (buttonTitles.includes(key)) {
+      clickButton(key);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const key = event.key;
+      const buttonTitles = buttonDataHorizontal.concat(buttonDataVertical).map(button => button.title);
+      if (key === "Enter") {
+        clickButton("=");
+      } else if (key === 'Backspace') {
+        clickButton("C");
+      } else if (key === 'Delete') {
+        clickButton("AC");
+      } else if (buttonTitles.includes(key)) {
+        clickButton(key);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [buttonDataHorizontal, buttonDataVertical]);
+
+
   return (
-    <main className="calculadora-container">
+    <main className="calculadora-container" tabIndex="0" onKeyDown={handleKeyDown}>
       <div className="display-calculadora">
         <Display text={displayText} className={errorDisplay ? 'display-text' : 'display-number'} />
       </div>
