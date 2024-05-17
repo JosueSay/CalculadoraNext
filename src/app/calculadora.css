@@ -1,0 +1,41 @@
+.calculadora-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  .display-calculadora {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button-calculadora {
+    max-width: 24.5rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+ .buttons-calculator-horizontal {
+    display: flex;
+    min-width: 18.375rem;
+    min-width: 18.375rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+ }
+ .buttons-calculator-vertical {
+    display: flex;
+    min-width: 6.125rem;
+    min-width: 6.125rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+ }
