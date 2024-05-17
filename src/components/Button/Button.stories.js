@@ -5,7 +5,7 @@ export default {
   component: Button
 };
 
-export const ButtonDefault = {
+export const ButtonText = {
   args: {
     title: 'Click Me!',
     className: 'button-text',
