@@ -2,9 +2,12 @@
   aspect-ratio: 1/1;
   font-size: 1rem;
   padding: 1rem;
-  transition-duration: 0.4s;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
+  box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
+  border: 0.1rem solid white;
+  user-select: none;
+  outline: none
 }
 
 .button-text {
@@ -17,10 +20,9 @@
   text-overflow: ellipsis;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  color: rgb(21, 0, 255);
+  color: black;
   background-color: rgb(239, 239, 239);
   border: 0.1rem solid white;
-  transition-duration: 0.4s;
   box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -30,42 +32,40 @@
   width: 5rem;
   height: 11rem;
   color: white;
-  background-color: #001eff;
-  border: 0.15rem solid white;
-  box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0, 68, 255, 0.2);
+  background-color: blue;
 }
 
 .button-number, .button-operator {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: rgb(239, 239, 239);
-  border: 0.1rem solid white;
-  box-shadow: 0.2rem 0.3rem 0.5rem 0 rgba(0,0,0,0.2);
 }
 
 .button-operator {
+  background-color: rgb(221, 221, 221);
   color: rgb(21, 0, 255);
 }
 
 .button-number {
+  background-color: rgb(239, 239, 239);
   color: black;
 }
 
-.button-equals:hover {
-  background-color: rgb(239, 239, 239) ;
-  color: #001eff;
+.button-active,
+.button-equals:active,
+.button-number:active,
+.button-operator:active,
+.button-text:active {
+  filter: brightness(0.9);
   cursor: pointer;
 }
 
-.button-operator:hover {
-  background-color: rgb(255, 255, 255);
-  color: #001eff;
+.button-equals:hover,
+.button-number:hover,
+.button-operator:hover,
+.button-text:hover {
   cursor: pointer;
 }
 
-.button-text:hover, .button-number:hover {
-  background-color: #001eff;
-  color: white;
-  cursor: pointer;
-}
+
+
