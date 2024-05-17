@@ -1,38 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📟 Calculadora Test
 
-## Getting Started
+## 📝 Descripción
 
-First, run the development server:
+Este proyecto es una calculadora simple hecha en Next.js. La calculadora consta de una pantalla (display) y un teclado numérico compuesto de botones HTML. Todo el input se realiza desde los botones presionado por el teclado o mouse. 
 
+## ⚙️ Funcionalidad
+
+- **Entrada de Números:** Al presionar un número en el teclado numérico, se muestra en el display. Los números se concatenan a la derecha del display.
+- **Operaciones:** Al presionar una tecla de “operación”, el siguiente número ingresado limpia el display antes de mostrarse. Al presionar una operación, se muestra el resultado actual en el display.
+- **Botón de Igualdad:** Muestra el resultado de la operación.
+- **Operaciones Disponibles:** Suma, Resta, Multiplicación, División, Cambio de signo (+/-).
+- **Límites del Display:** 
+  - No más de 9 caracteres.
+  - No muestra números negativos, muestra "ERROR" si el resultado es negativo.
+  - No muestra números superiores a 999999999, muestra "ERROR" si el resultado es mayor.
+- **Botónes especiales:** 
+  - "=" es el botón "Enter".
+  - "C" es el botón "Backspace".
+  - "AC" es el botón "Suprimir".
+
+## 📊 Referencias de la calculadora
+
+La calculadora está basa en la siguiente funcionalidad [aquí](https://codepen.io/trobes/pen/EerrNd).
+
+## 🌐 Publicación
+
+- [Calculadora en Producción](https://dominio.com/calculadora)
+- [Código Fuente en GitHub](https://github.com/JosueSay/CalculadoraNext)
+
+## 📦 Scripts del Proyecto
+
+Estos son los comandos de npm que puedes usar en este proyecto:
+
+- `npm run dev`: Inicia la aplicación en modo desarrollo.
+- `npm run build`: Compila la aplicación para producción.
+- `npm start`: Inicia el servidor de la aplicación compilada.
+- `npm run lint`: Corre el linter para encontrar y corregir problemas en el código.
+- `npm run storybook`: Inicia Storybook para desarrollar y visualizar componentes de UI de forma aislada.
+- `npm run build-storybook`: Compila Storybook para producción.
+- `npm test`: Corre los tests con Jest.
+- `npm run coverage`: Genera un reporte de cobertura de los tests.
+
+## 🏆 Acciones adicionales
+
+- **Punto Decimal:** El punto cuenta como un carácter dentro del límite de 9, tanto para el ingreso de datos como para los resultados.
+- **División:** Respetando la regla de los 9 caracteres y manejando resultados con muchos decimales.
+- **Función +/-:** Convierte el número desplegado en negativo, contando como un carácter dentro del límite de 9.
+- **Ingreso desde el Teclado:** Permite ingresar números y operaciones por medio del teclado, resaltando el botón correspondiente.
+- **Cobertura de Tests:** Implementado con `npm run coverage` para mostrar el porcentaje de código protegido por tests.
+- **Implementación en Next.js:** La calculadora está hecha en Next.js.
+
+## 🛠️ Tecnologías Utilizadas
+
+- Next.js
+- JavaScript
+- Jest para tests
+- Storybook para componentes
+
+## 🚀 Cómo Correr el Proyecto
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/JosueSay/CalculadoraNext.git
+
+2. Instala las dependencias
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   npm install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Correr la aplicación en modo desarrollo
+```bash
+   npm run dev
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+4. Correr los test
+```bash
+   npm run test
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-# CalculadoraNext
+5. Genera el reporte de cobertura:
+```bash
+   npm run coverage
