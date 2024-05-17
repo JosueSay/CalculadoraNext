@@ -3,7 +3,7 @@ import './Display.css'
 function Display({ text, className }) {
   return (
     <div className='display-container'>
-      <p className={className}>{text}</p>
+      {text && <p className={className}>{text}</p>} {/* Renderizar el elemento solo si el texto no está vacío */}
     </div>
   );
 }

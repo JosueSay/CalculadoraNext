@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Button from '../components/Button/Button';
 import Display from '../components/Display/Display';
 import './calculadora.css';
