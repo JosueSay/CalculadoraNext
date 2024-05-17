@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { suma, resta, multiplica, divide, cambiarSigno, borrarUltimoDigito, borrarTodo } from './calculator';
 import Button from '../components/Button/Button';
 import Display from '../components/Display/Display';
@@ -12,7 +12,7 @@ function Home() {
   const [currentOperation, setCurrentOperation] = useState(null);
   const [lastValue, setLastValue] = useState(null);
 
-  const buttonDataHorizontal = [
+  const buttonDataHorizontal = useMemo(() => [
     { title: 'AC', className: 'button-operator' },
     { title: 'C', className: 'button-operator' },
     { title: '/', className: 'button-operator' },
@@ -28,16 +28,16 @@ function Home() {
     { title: '+/-', className: 'button-operator' },
     { title: '0', className: 'button-number' },
     { title: '.', className: 'button-number' },
-  ];
+  ], []);
 
-  const buttonDataVertical = [
+  const buttonDataVertical = useMemo(() => [
     { title: '*', className: 'button-operator' },
     { title: '-', className: 'button-operator' },
     { title: '+', className: 'button-operator' },
     { title: '=', className: 'button-equals' },
-  ];
+  ], []);
 
-  const clickButton = (text, className, source = 'ratón') => {
+  const clickButton = useCallback((text, className, source = 'ratón') => {
     if (text === 'ERROR' || text === 'División por cero') {
       setErrorDisplay(true);
       setDisplayText(text);
@@ -56,7 +56,7 @@ function Home() {
       }
     }
 
-    // operacioens
+    // operaciones
     if (className.includes('button-operator') && text !== '=') {
       setLastValue(parseFloat(displayText));
       setCurrentOperation(text);
@@ -71,23 +71,27 @@ function Home() {
     if (text === '=') {
       if (currentOperation && lastValue !== null) {
         let result;
+        const currentValue = parseFloat(displayText);
         switch (currentOperation) {
           case '+':
-            result = suma(lastValue, displayText);
+            result = suma(lastValue, currentValue);
             break;
           case '-':
-            result = resta(lastValue, displayText);
+            result = resta(lastValue, currentValue);
             break;
           case '*':
-            result = multiplica(lastValue, displayText);
+            result = multiplica(lastValue, currentValue);
             break;
           case '/':
-            result = divide(lastValue, displayText);
+            result = divide(lastValue, currentValue);
             break;
           default:
             result = displayText; // no hacer nada
         }
-        setDisplayText(result);
+        if (result.toString().length > 9) {
+          result = "ERROR";
+        }
+        setDisplayText(result.toString());
         if (result === "ERROR" || result === "División por cero") setErrorDisplay(true);
         setCurrentOperation(null);
         setLastValue(null);
@@ -112,7 +116,7 @@ function Home() {
       setActiveButton(text);
       setTimeout(() => setActiveButton(null), 100);
     }
-  };
+  }, [displayText, currentOperation, lastValue]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -151,7 +155,7 @@ function Home() {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('keyup', handleKeyUp);
     };
-  }, [buttonDataHorizontal, buttonDataVertical]);
+  }, [buttonDataHorizontal, buttonDataVertical, clickButton]);
 
   return (
     <main className='calculadora-container' tabIndex='0'>

@@ -1,16 +1,8 @@
 export function validaResultado(resultado) {
-    // Si el resultado es negativo, retorna "ERROR"
-    if (resultado < 0) {
-        return "ERROR";
-    }
-    // Si el resultado es mayor a 999999999, retorna "ERROR"
-    if (resultado > 999999999) {
-        return "ERROR";
-    }
     // Convierte el resultado a una cadena con formato de número
     let resultadoStr = resultado.toLocaleString();
     // Si la longitud del número (sin comas) es mayor a 9, retorna "ERROR"
-    if (resultadoStr.replace(/,/g, '').length > 9) {
+    if (resultadoStr.length > 9) {
         return "ERROR";
     }
 
@@ -44,7 +36,7 @@ export function divide(a, b) {
 
 export function cambiarSigno(numero) {
     let resultado = -parseFloat(numero);
-    // Permite mostrar el número negativo como resultado de la operación "+/-"
+    // Solo valida el tamaño del número, no si es negativo
     return validaResultado(resultado);
 }
 
