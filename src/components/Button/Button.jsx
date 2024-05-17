@@ -7,7 +7,7 @@ function Button({ title, onClick, className }) {
        <button
         className={className}
         onClick={onClick}
-        tabIndex="0">
+        tabIndex='0'>
         {title}
       </button>
     </div>

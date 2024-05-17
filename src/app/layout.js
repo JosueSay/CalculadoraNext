@@ -7,9 +7,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang='es'>
       <Head>
-        <link rel="shortcut icon" href="/calculadora.png" />
+        <link rel='shortcut icon' href='/calculadora.png' />
       </Head>
       <body>
         {children}
